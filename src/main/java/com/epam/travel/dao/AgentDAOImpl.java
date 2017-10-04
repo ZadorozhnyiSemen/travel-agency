@@ -4,6 +4,7 @@ import com.epam.travel.model.Agent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Repository
 public class AgentDAOImpl extends JdbcDaoSupport implements AgentDAO {
     @Qualifier("dataSource")
     @Autowired
