@@ -16,10 +16,9 @@ public class TourController {
 
     @RequestMapping("/")
     public String getIndex() {
-        List<User> list = userDAO.getAllUsers();
-        for (User user : list) {
-            System.out.println(user.toString());
-        }
+        User user = new User(1, "GETBYID", "test", "haha", "haha", true);
+        User user2 = userDAO.findUser(2);
+        System.out.println(user2.toString());
         return "Hello";
     }
 
