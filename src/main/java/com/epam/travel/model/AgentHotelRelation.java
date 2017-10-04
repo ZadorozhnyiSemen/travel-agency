@@ -31,4 +31,10 @@ public class AgentHotelRelation {
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
+
+    public AgentHotelRelation(int id, Agent agent, Hotel hotel) {
+        this.id = id;
+        this.agent = agent;
+        this.hotel = hotel;
+    }
 }
