@@ -2,6 +2,7 @@ package com.epam.travel.dao;
 
 import com.epam.travel.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +15,7 @@ import java.util.Map;
 @Repository
 public class UserDAOImpl extends JdbcDaoSupport implements UserDAO{
 
+    @Qualifier("dataSource")
     @Autowired
     DataSource dataSource;
 
@@ -24,7 +26,7 @@ public class UserDAOImpl extends JdbcDaoSupport implements UserDAO{
 
     @Override
     public List<User> getAllUsers() {
-        String sql = "SELECT * FROM user";
+        String sql = "SELECT * FROM customer";
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 
         List<User> result = new ArrayList<>();
