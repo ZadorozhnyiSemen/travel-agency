@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +28,14 @@ public class UserDAOImpl extends JdbcDaoSupport implements UserDAO{
 
     @Override
     public List<User> getAllUsers() {
+
+        try {
+            Connection connection = dataSource.getConnection();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         String sql = "SELECT * FROM customer";
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 
