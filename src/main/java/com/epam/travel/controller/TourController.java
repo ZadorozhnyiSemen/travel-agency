@@ -1,9 +1,11 @@
 package com.epam.travel.controller;
 
+import com.epam.travel.model.Booking;
 import com.epam.travel.model.Hotel;
 import com.epam.travel.dao.UserDAOImpl;
 import com.epam.travel.model.Agent;
 import com.epam.travel.model.User;
+import com.epam.travel.service.BookingService;
 import com.epam.travel.service.HotelService;
 import com.epam.travel.service.AgentService;
 import com.epam.travel.service.UserService;
@@ -20,6 +22,8 @@ public class TourController {
     UserService userService;
     @Autowired
     AgentService agentService;
+    @Autowired
+    BookingService bookingService;
 
     @RequestMapping("/")
     public String getIndex() {
@@ -47,10 +51,18 @@ public class TourController {
     @RequestMapping("/agent")
     public String getAgents() {
         List<Agent> agents = agentService.getAllAgents();
-        for (Agent agent :
-                agents) {
+        for (Agent agent : agents) {
             System.out.println(agent);
         }
         return String.valueOf(agents);
+    }
+
+    @RequestMapping("/booking")
+    public String getBookings() {
+        List<Booking> bookings = bookingService.getAllBookings();
+        for (Booking booking : bookings) {
+            System.out.println(booking);
+        }
+        return String.valueOf(bookings);
     }
 }

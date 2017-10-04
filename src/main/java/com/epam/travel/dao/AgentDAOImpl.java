@@ -27,7 +27,7 @@ public class AgentDAOImpl extends JdbcDaoSupport implements AgentDAO {
     public List<Agent> getAllAgents() {
         String sql = "SELECT * from agent";
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
-        List<Agent> result = new ArrayList<>();
+        List<Agent> result = new ArrayList<>(rows.size());
         for (Map<String, Object> row : rows) {
             Agent agent = new Agent();
             agent.setId((Integer) row.get("id"));
