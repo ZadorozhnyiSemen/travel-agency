@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +22,15 @@ public class RelationDAOImpl extends JdbcDaoSupport implements RelationDAO {
     @Autowired
     DataSource dataSource;
 
+    @PostConstruct
+    private void init() {
+        setDataSource(dataSource);
+    }
+
     @Override
     public List<AgentHotelRelation> getAllRelations() {
         String sql = "SELECT ahr.id, ag.id AS agent_id, ag.agent_name, ag.agent_address, ag.agent_phone, \n" +
-                "ho.id AS hotet_id, ho.hotel_country, ho.hotel_city, ho.hotel_address, ho.hotel_phone, ho.hotel_rank \n" +
+                "ho.id AS hotel_id, ho.hotel_country, ho.hotel_city, ho.hotel_address, ho.hotel_phone, ho.hotel_rank \n" +
                 "FROM agent_hotel_relation AS ahr\n" +
                 "JOIN agent AS ag\n" +
                 "ON ag.id = ahr.agent_id\n" +

@@ -13,7 +13,6 @@ public class UserServiceImpl implements UserService{
     @Autowired
     UserDAO userDAO;
 
-
     @Override
     public List<User> getAllUsers() {
         return userDAO.getAllUsers();

@@ -1,5 +1,6 @@
 package com.epam.travel.controller;
 
+import com.epam.travel.model.AgentHotelRelation;
 import com.epam.travel.model.Hotel;
 import com.epam.travel.model.Agent;
 import com.epam.travel.model.User;
@@ -54,5 +55,14 @@ public class TourController {
             System.out.println(agent);
         }
         return String.valueOf(agents);
+    }
+
+    @RequestMapping("/relation")
+    public String getRelations() {
+        List<AgentHotelRelation> relations = relationService.getAllRelations();
+        for (AgentHotelRelation relation : relations) {
+            System.out.println(relation.getId() + " " + relation.getAgent() + " " + relation.getHotel());
+        }
+        return String.valueOf(relations);
     }
 }
