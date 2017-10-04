@@ -2,6 +2,8 @@ package com.epam.travel.controller;
 
 import com.epam.travel.dao.UserDAOImpl;
 import com.epam.travel.model.User;
+import com.epam.travel.service.UserService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,16 +14,16 @@ import java.util.List;
 public class TourController {
 
     @Autowired
-    UserDAOImpl userDAO;
+    UserService userService;
 
     @RequestMapping("/")
     public String getIndex() {
-        List<User> users = userDAO.getAllUsers();
+        List<User> users = userService.getAllUsers();
         for (User user :
                 users) {
             System.out.println(user);
         }
-        return "Hello";
+        return String.valueOf(users);
     }
 
 }
