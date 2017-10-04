@@ -2,13 +2,22 @@ package com.epam.travel.model;
 
 public class Hotel {
     private int id;
+    private String name;
     private String country;
     private String city;
     private String address;
     private String phone;
-    private short rank;
+    private int rank;
 
     public Hotel() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getId() {
@@ -51,11 +60,11 @@ public class Hotel {
         this.phone = phone;
     }
 
-    public short getRank() {
+    public int getRank() {
         return rank;
     }
 
-    public void setRank(short rank) {
+    public void setRank(int rank) {
         this.rank = rank;
     }
 
