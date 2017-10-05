@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface AgentService {
     List<Agent> getAllAgents();
-
     void addAgent(Agent agent);
-
     Agent findAgent(int id);
 }

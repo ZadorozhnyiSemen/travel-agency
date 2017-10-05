@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface BookingService {
     List<Booking> getAllBookings();
-
     void addBooking(Booking booking);
-
     Booking findBooking(int id);
 }

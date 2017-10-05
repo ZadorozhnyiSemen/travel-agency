@@ -9,6 +9,7 @@ import java.util.List;
 
 @Service
 public class BookingServiceImpl implements BookingService {
+
     @Autowired
     BookingDAO bookingDAO;
 
