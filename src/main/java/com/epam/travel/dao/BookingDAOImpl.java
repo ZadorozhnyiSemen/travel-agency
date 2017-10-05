@@ -20,6 +20,8 @@ public class BookingDAOImpl extends JdbcDaoSupport implements BookingDAO {
     DataSource dataSource;
     @Autowired
     UserDAO userDAO;
+    @Autowired
+    RelationDAO relationDAO;
 
     @PostConstruct
     private void init() {
@@ -35,7 +37,7 @@ public class BookingDAOImpl extends JdbcDaoSupport implements BookingDAO {
             Booking booking = new Booking();
             booking.setId((Integer) row.get("id"));
             booking.setUser(userDAO.findUser((Integer) row.get("user_id")));
-            //booking.setRelation();
+            booking.setRelation(relationDAO.findRelation((Integer) row.get("relation_id")));
             booking.setStartDate((Date) row.get("start_day"));
             booking.setEndDate((Date) row.get("end_day"));
             booking.setStatus((String) row.get("status"));
@@ -63,7 +65,7 @@ public class BookingDAOImpl extends JdbcDaoSupport implements BookingDAO {
             Booking booking = new Booking();
             booking.setId((Integer) rs.getInt("id"));
             booking.setUser(userDAO.findUser((Integer) rs.getInt("user_id")));
-            //booking.setRelation();
+            booking.setRelation(relationDAO.findRelation((Integer) rs.getInt("relation_id")));
             booking.setStartDate((Date) rs.getDate("start_day"));
             booking.setEndDate((Date) rs.getDate("end_day"));
             booking.setStatus((String) rs.getString("status"));
