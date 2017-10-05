@@ -63,13 +63,13 @@ public class HotelDAOImpl extends JdbcDaoSupport implements HotelDAO {
 
         return getJdbcTemplate().queryForObject(sql, new Object[]{id}, (rs, rowNum) -> {
             Hotel hotel = new Hotel();
-            hotel.setId((Integer) rs.getInt("id"));
-            hotel.setName((String) rs.getString("hotel_name"));
-            hotel.setCountry((String) rs.getString("hotel_country"));
-            hotel.setCity((String) rs.getString("hotel_city"));
-            hotel.setAddress((String) rs.getString("hotel_address"));
-            hotel.setPhone((String) rs.getString("hotel_phone"));
-            hotel.setRank((short) rs.getShort("hotel_rank"));
+            hotel.setId(rs.getInt("id"));
+            hotel.setName(rs.getString("hotel_name"));
+            hotel.setCountry(rs.getString("hotel_country"));
+            hotel.setCity(rs.getString("hotel_city"));
+            hotel.setAddress(rs.getString("hotel_address"));
+            hotel.setPhone(rs.getString("hotel_phone"));
+            hotel.setRank(rs.getShort("hotel_rank"));
             return hotel;
         });
     }

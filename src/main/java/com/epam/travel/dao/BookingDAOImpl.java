@@ -63,12 +63,12 @@ public class BookingDAOImpl extends JdbcDaoSupport implements BookingDAO {
         String sql = "SELECT * FROM booking WHERE id = ?";
         return getJdbcTemplate().queryForObject(sql, new Object[]{id}, (rs, rowNum) -> {
             Booking booking = new Booking();
-            booking.setId((Integer) rs.getInt("id"));
-            booking.setUser(userDAO.findUser((Integer) rs.getInt("user_id")));
-            booking.setRelation(relationDAO.findRelation((Integer) rs.getInt("relation_id")));
-            booking.setStartDate((Date) rs.getDate("start_day"));
-            booking.setEndDate((Date) rs.getDate("end_day"));
-            booking.setStatus((String) rs.getString("status"));
+            booking.setId(rs.getInt("id"));
+            booking.setUser(userDAO.findUser(rs.getInt("user_id")));
+            booking.setRelation(relationDAO.findRelation(rs.getInt("relation_id")));
+            booking.setStartDate(rs.getDate("start_day"));
+            booking.setEndDate(rs.getDate("end_day"));
+            booking.setStatus(rs.getString("status"));
             return booking;
         });
     }

@@ -54,10 +54,10 @@ public class AgentDAOImpl extends JdbcDaoSupport implements AgentDAO {
         String sql = "SELECT * FROM customer WHERE id = ?";
         return getJdbcTemplate().queryForObject(sql, new Object[]{id}, (rs, rowNum) -> {
             Agent agent = new Agent();
-            agent.setId((Integer) rs.getInt("id"));
-            agent.setName((String) rs.getString("agent_name"));
-            agent.setAddress((String) rs.getString("agent_address"));
-            agent.setPhone((String) rs.getString("agent_phone"));
+            agent.setId(rs.getInt("id"));
+            agent.setName(rs.getString("agent_name"));
+            agent.setAddress(rs.getString("agent_address"));
+            agent.setPhone(rs.getString("agent_phone"));
             return agent;
         });
     }

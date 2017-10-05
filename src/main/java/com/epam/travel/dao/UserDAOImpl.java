@@ -61,12 +61,12 @@ public class UserDAOImpl extends JdbcDaoSupport implements UserDAO {
 
         return getJdbcTemplate().queryForObject(sql, new Object[]{id}, (rs, rowNum) -> {
             User user = new User();
-            user.setId((Integer) rs.getInt("id"));
-            user.setName((String) rs.getString("user_name"));
-            user.setSurname((String) rs.getString("user_surname"));
-            user.setMail((String) rs.getString("user_mail"));
-            user.setPhone((String) rs.getString("user_phone"));
-            user.setLoyalty((Boolean) rs.getBoolean("user_loyalty"));
+            user.setId(rs.getInt("id"));
+            user.setName(rs.getString("user_name"));
+            user.setSurname(rs.getString("user_surname"));
+            user.setMail(rs.getString("user_mail"));
+            user.setPhone(rs.getString("user_phone"));
+            user.setLoyalty(rs.getBoolean("user_loyalty"));
             return user;
         });
     }
