@@ -3,7 +3,6 @@ package com.epam.travel.dao;
 import com.epam.travel.model.Agent;
 import com.epam.travel.model.AgentHotelRelation;
 import com.epam.travel.model.Hotel;
-import com.epam.travel.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -38,8 +37,8 @@ public class RelationDAOImpl extends JdbcDaoSupport implements RelationDAO {
                 "ON ho.id = ahr.hotel_id";
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 
-        List<AgentHotelRelation> result = new ArrayList<>();
-        for (Map<String, Object> row:  rows) {
+        List<AgentHotelRelation> result = new ArrayList<>(rows.size());
+        for (Map<String, Object> row : rows) {
             Agent agent = new Agent();
             agent.setId((Integer) row.get("agent_id"));
             agent.setName((String) row.get("agent_name"));

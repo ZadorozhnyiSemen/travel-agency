@@ -29,8 +29,8 @@ public class HotelDAOImpl extends JdbcDaoSupport implements HotelDAO {
         String sql = "SELECT * FROM hotel";
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
 
-        List<Hotel> result = new ArrayList<>();
-        for (Map<String, Object> row:  rows) {
+        List<Hotel> result = new ArrayList<>(rows.size());
+        for (Map<String, Object> row : rows) {
             Hotel hotel = new Hotel();
             hotel.setId((Integer) row.get("id"));
             hotel.setName((String) row.get("hotel_name"));

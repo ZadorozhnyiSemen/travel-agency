@@ -1,15 +1,7 @@
 package com.epam.travel.controller;
 
-import com.epam.travel.model.AgentHotelRelation;
-import com.epam.travel.model.Booking;
-import com.epam.travel.model.Hotel;
-import com.epam.travel.model.Agent;
-import com.epam.travel.model.User;
-import com.epam.travel.service.BookingService;
-import com.epam.travel.service.HotelService;
-import com.epam.travel.service.AgentService;
-import com.epam.travel.service.RelationService;
-import com.epam.travel.service.UserService;
+import com.epam.travel.model.*;
+import com.epam.travel.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +13,8 @@ public class TourController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    HotelService hotelService;
     @Autowired
     AgentService agentService;
     @Autowired
@@ -37,9 +31,6 @@ public class TourController {
         }
         return String.valueOf(users);
     }
-
-    @Autowired
-    HotelService hotelService;
 
     @RequestMapping("/hotel")
     public String getHotels() {
